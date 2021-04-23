@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>后台首页</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+<!--导航-->
+<nav th:replace="admin/_fragments :: menu(0) " class="ui inverted attached segment m-padded-tb-mini m-shadow-small " >
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">管理后台</h2>
+            <a href="#" class="active item "><i class="home icon"></i> 博客</a>
+            <a href="#" class=" item"><i class=" idea icon"></i> 分类</a>
+            <a href="#" class="item"><i class=" tags icon"></i> 标签</a>
+
+            <div class="right m-mobile-hide menu">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img src="https://unsplash.it/100/100?image=1005" alt="" class="ui avatar image">
+                        Daniel Wu
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</nav>
+
+<!--中间内容-->
+<br>
+<br>
+
+<div class=" m-padded-tb-large m-container">
+    <div class="ui container">
+       <div class="ui seccess large message">
+           <h3>Hi!</h3>
+           <p>吴彦祖，欢迎登录！</p>
+       </div>
+        <br>
+        <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1592489997&di=615e7430cbf451e12ca7040bae981c23&src=http://pic3.iqiyipic.com/image/20200531/bb/a3/v_149330710_m_601_720_405.jpg" alt="" class="ui rounded borderedfluid image">
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<!--底部footer-->
+<footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui divided inverted stackable grid">
+            <div class="three wide column">
+                <div class="item">
+                    <img src="../../static/images/idCard.png" class="ui centered rounded image" alt="" style="width:110px">
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+
+                    <a href="#" class="item">MySql安装</a>
+                    <a href="#" class="item">Python安装</a>
+                    <a href="#" class="item">Java安装</a>
+
+                </div>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">QQ:1436372974</a>
+                    <a href="#" class="item">Email:1436372974@qq.com</a>
+                </div>
+
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header ">关于</h4>
+                <p class="m-text-thin m-text-lined m-opacity-mini">这是我的个人博客及课程设计项目</p>
+            </div>
+
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-lined m-opacity-mini">Copyright@2020 Blog by Wuyanzu</p>
+    </div>
+</footer>
+<th:block th:replace="_fragments :: script">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+</th:block>
+
+<script>
+    $('.ui.dropdown').dropdown();
+</script>
+
+</body>
+</html>

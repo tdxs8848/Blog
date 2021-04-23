@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>关于我</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css">
+</head>
+<body>
+<!--导航-->
+<nav th:replace="_fragments :: menu(4)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small " >
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">标签</h2>
+            <a href="#" class="item "><i class="home icon"></i> 首页</a>
+            <a href="#" class="item"><i class=" idea icon"></i> 分类</a>
+            <a href="#" class=" item"><i class=" tags icon"></i> 标签</a>
+            <a href="#" class="item"><i class=" clone icon"></i> 归档</a>
+            <a href="#" class="active item"><i class="  info icon"></i> 关于我</a>
+
+            <div class="right item">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search....">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</nav>
+
+<!--中间内容-->
+<div class=" m-padded-tb-large m-container">
+   <div class="ui container">
+       <div class="ui stackable grid">
+           <div class="eleven wide column">
+               <div class="ui segment">
+                   <img src="../static/images/aboutme.jpg"  th:src="@{/images/aboutme.jpg}" alt="" class="ui rounded  image" style="width: 800px;">
+
+               </div>
+           </div>
+           <div class="five wide column">
+               <div class="ui top attached segment">
+                   <div class="ui header">关于我</div>
+               </div>
+               <div class="ui attached segment">
+                    <p class="m-text-thin "style="font-size: 12px;">吴彦祖（Daniel Wu），1974年9月30日出生于美国旧金山，华语影视男演员、导演、制片人，毕业于美国俄勒冈大学。</p>
+                    <p class="m-text-thin "style="font-size: 12px;">2001年，主演文艺片《游园惊梦》。2003年，凭借动作片《旺角黑夜》提名第24届香港电影金像奖最佳男主角；</p>
+
+               </div>
+               <div class="ui attached segment">
+                   <div class="ui orange basic left pointing label">编程</div>
+                   <div class="ui orange basic left pointing label">运动</div>
+                   <div class="ui orange basic left pointing label">游戏</div>
+                   <div class="ui orange basic left pointing label">学习</div>
+
+               </div>
+               <div class="ui attached segment">
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Java</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Python</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">JavaScript</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">MySql</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">...</div>
+
+               </div>
+               <div class="ui bottom attached segment">
+
+                   <a href="#" class="ui wechat circular icon button"> <i class="weixin icon"></i></a>
+                   <a href="#" class="ui qq circular icon button" data-content="13424405192" data-position="bottom center"> <i class="qq icon"></i></a>
+
+               </div>
+               <div class="ui weixin-qr flowing popup transtition hidden" >
+                   <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" alt="" class="ui rounded image" style="width: 120px;">
+               </div>
+
+           </div>
+       </div>
+   </div>
+</div>
+<br>
+<br>
+
+<!--底部footer-->
+<footer footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui divided inverted stackable grid">
+            <div class="three wide column">
+                <div class="item">
+                    <img src="../static/images/idCard.png" class="ui rounded image" alt="" style="width:110px">
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+
+                    <a href="#" class="item">MySql安装</a>
+                    <a href="#" class="item">Python安装</a>
+                    <a href="#" class="item">Java安装</a>
+
+                </div>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">QQ:1436372974</a>
+                    <a href="#" class="item">Email:1436372974@qq.com</a>
+                </div>
+
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header ">关于</h4>
+                <p class="m-text-thin m-text-lined m-opacity-mini">这是我的个人博客及课程设计项目</p>
+            </div>
+
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-lined m-opacity-mini">Copyright@2020 Blog by Wuyanzu</p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+    $('.qq').popup();
+    $('.wechat').popup({
+        popup:$('.weixin-qr.popup'),
+        position:'bottom center'
+    });
+</script>
+
+
+
+</body>
+</html>
