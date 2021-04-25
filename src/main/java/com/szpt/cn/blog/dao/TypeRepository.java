@@ -13,6 +13,6 @@ import java.util.List;
 public interface TypeRepository extends JpaRepository<Type,Long>, JpaSpecificationExecutor<Type> {
     Type findByName(String name);
 
-    @Query("select t from Type t")
+    @Query(value = "select distinct t from Type t left join Blog b on t.id = b.type.id where b.published = true")
     List<Type> findTop(Pageable pageable);
 }

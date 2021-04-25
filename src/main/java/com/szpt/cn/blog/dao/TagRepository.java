@@ -10,7 +10,7 @@ import java.util.List;
 public interface TagRepository extends JpaRepository<Tag,Long>, JpaSpecificationExecutor<Tag> {
     Tag findByName(String name);
 
-    @Query("select t from Tag t")
+    @Query("select t from Tag t ,BlogTags bt,Blog b where t.id = bt.tags_id and b.id = bt.blogs_id and b.published = true ")
     List<Tag> findTop(Pageable pageable);
 
 
