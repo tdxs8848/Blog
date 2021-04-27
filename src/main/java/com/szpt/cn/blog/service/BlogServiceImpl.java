@@ -51,6 +51,11 @@ public class BlogServiceImpl implements BlogService{
 
     @Override
     public Page<Blog> listBlog(Pageable pageable) {
+        return blogRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Blog> listBlogIndex(Pageable pageable) {
         return blogRepository.findAllBlog(pageable);
     }
 
@@ -89,7 +94,9 @@ public class BlogServiceImpl implements BlogService{
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 Join join = root.join("tags");
-                return cb.equal(join.get("id"),tagId);
+                Predicate cbPub = cb.equal(root.<Boolean>get("published"),true);
+                Predicate cbJoin = cb.equal(join.get("id"),tagId);
+                return cb.and(cbJoin,cbPub);
             }
         },pageable);
     }
@@ -100,6 +107,7 @@ public class BlogServiceImpl implements BlogService{
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();
+
                 if(!"".equals(blog.getTitle())&&blog.getTitle()!=null){
                     predicates.add(cb.like(root.<String>get("title"),"%"+blog.getTitle()+"%"));
                 }
@@ -109,6 +117,7 @@ public class BlogServiceImpl implements BlogService{
                 if(blog.isRecommend()){
                     predicates.add(cb.equal(root.<Boolean>get("recommend"),blog.isRecommend()));
                 }
+                predicates.add(cb.equal(root.<Boolean>get("published"),true));
 
                 cq.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;

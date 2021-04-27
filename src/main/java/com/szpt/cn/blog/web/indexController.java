@@ -31,7 +31,7 @@ public class indexController {
     @GetMapping("/")
     public String index(@PageableDefault(size = 8,sort = {"updataTime"},
             direction = Sort.Direction.DESC) Pageable p, Model model){
-        model.addAttribute("page",blogService.listBlog(p));
+        model.addAttribute("page",blogService.listBlogIndex(p));
         model.addAttribute("types",typeService.listTypeTop(6));
         model.addAttribute("tags",tagService.listTagTop(10));
         model.addAttribute("recommendBlogs",blogService.listRecommendBlogTop(8));
