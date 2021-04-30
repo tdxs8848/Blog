@@ -35,6 +35,10 @@ public class Tag {
     }
 
     public List<Blog> getBlogs() {
+        for(int i=0;i<blogs.size();i++){
+            if (blogs.get(i).isPublished()==false)
+                blogs.remove(i);
+        }
         return blogs;
     }
 
