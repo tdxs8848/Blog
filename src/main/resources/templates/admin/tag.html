@@ -12,7 +12,7 @@
 <nav th:replace="admin/_fragments :: menu(3) " class="ui inverted attached segment m-padded-tb-mini m-shadow-small " >
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">标签管理</h2>
+            <h2 class="ui green header item">标签管理</h2>
             <a href="#" class="item "><i class="home icon"></i> 博客</a>
             <a href="#" class=" item"><i class=" idea icon"></i> 分类</a>
             <a href="#" class="item"><i class=" tags icon"></i> 标签</a>
@@ -39,7 +39,7 @@
     <div class="ui container">
         <div class="right menu">
             <a href="#" th:href="@{/admin/tag/input}" class=" item">新增</a>
-            <a href="#" th:href="@{/admin/tag}" class="teal  active item">列表管理</a>
+            <a href="#" th:href="@{/admin/tag}" class="green  active item">列表管理</a>
         </div>
 
     </div>
@@ -67,7 +67,7 @@
                 <td th:text="${iterStat.count}"}>1</td>
                 <td th:text="${tag.name}">学习</td>
                 <td>
-                    <a href="#" th:href="@{/admin/tag/{id}/input(id=${tag.id})}" class="ui mini teal basic button">编辑</a>
+                    <a href="#" th:href="@{/admin/tag/{id}/input(id=${tag.id})}" class="ui mini green basic button">编辑</a>
                     <a href="#" th:href="@{/admin/tag/{id}/delete(id=${tag.id})}"class="ui mini red  basic button">删除</a>
                 </td>
             </tr>
@@ -79,7 +79,7 @@
                         <a th:href="@{/admin/tag(page=${page.number}-1)}" class=" item" th:unless="${page.first}">上一页</a>
                         <a th:href="@{/admin/tag(page=${page.number}+1)}" class=" item" th:unless="${page.last}">下一页</a>
                    </div>
-                    <a href="" th:href="@{/admin/tag/input}"  class="ui mini right floated teal basic button">新增</a>
+                    <a href="" th:href="@{/admin/tag/input}"  class="ui mini right floated green basic button">新增</a>
                 </th>
             </tr>
             </tfoot>
