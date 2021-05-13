@@ -3,6 +3,7 @@
 <head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
     <title>关于我</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link rel="stylesheet" href="../static/css/me.css">
@@ -12,7 +13,7 @@
 <nav th:replace="_fragments :: menu(4)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small " >
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">标签</h2>
+            <h2 class="ui green header item">标签</h2>
             <a href="#" class="item "><i class="home icon"></i> 首页</a>
             <a href="#" class="item"><i class=" idea icon"></i> 分类</a>
             <a href="#" class=" item"><i class=" tags icon"></i> 标签</a>
@@ -51,18 +52,18 @@
 
                </div>
                <div class="ui attached segment">
-                   <div class="ui orange basic left pointing label">编程</div>
-                   <div class="ui orange basic left pointing label">运动</div>
-                   <div class="ui orange basic left pointing label">游戏</div>
-                   <div class="ui orange basic left pointing label">学习</div>
+                   <div class="ui red basic left pointing label">编程</div>
+                   <div class="ui red basic left pointing label">运动</div>
+                   <div class="ui red basic left pointing label">游戏</div>
+                   <div class="ui red basic left pointing label">学习</div>
 
                </div>
                <div class="ui attached segment">
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Java</div>
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Python</div>
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">JavaScript</div>
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">MySql</div>
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">...</div>
+                    <div class="ui green basic left pointing label m-margin-tb-tiny">Java</div>
+                    <div class="ui green basic left pointing label m-margin-tb-tiny">Python</div>
+                    <div class="ui green basic left pointing label m-margin-tb-tiny">JavaScript</div>
+                    <div class="ui green basic left pointing label m-margin-tb-tiny">MySql</div>
+                    <div class="ui green basic left pointing label m-margin-tb-tiny">...</div>
 
                </div>
                <div class="ui bottom attached segment">
@@ -92,6 +93,7 @@
                 </div>
             </div>
             <div class="three wide column">
+<!--                header标题-->
                 <h4 class="ui inverted header">最新博客</h4>
                 <div class="ui inverted link list">
 

@@ -13,13 +13,14 @@
 </head>
 <body>
 <!--导航-->
-<nav  th:fragment = "menu(n)"  class="ui inverted grey attached segment m-padded-tb-mini m-shadow-small " >
+<nav  th:fragment = "menu(n)"  class="ui inverted grey attached segment m-padded-tb-somini m-shadow-small " >
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui green header item">管理后台</h2>
             <a href="#" th:href="@{/admin/blogs}" class="item" th:classappend="${n==1} ? 'active'"><i class="home icon"></i> 博客</a>
             <a href="#" th:href="@{/admin/type}" class=" item" th:classappend="${n==2} ? 'active'"><i class=" sitemap icon"></i> 分类</a>
             <a href="#" th:href="@{/admin/tag}"  class="item"  th:classappend="${n==3} ? 'active'"><i class=" tags icon"></i> 标签</a>
+
 
             <div class="right m-mobile-hide menu">
                 <div class="ui dropdown item">
@@ -49,7 +50,7 @@
     </div>
 </div>
 <!--底部footer-->
-<footer th:fragment="footer" class="ui inverted grey vertical segment m-padded-tb-massive">
+<footer th:fragment="footer" class="ui inverted grey vertical segment m-padded-tb-huge">
     <div class="ui center aligned container">
         <div class="ui divided inverted stackable grid">
 <!--            <div class="three wide column">-->
@@ -70,6 +71,8 @@
             </div>
             <div class="eight wide column">
                 <h4 class="ui inverted header">联系我</h4>
+
+
                 <div class="ui inverted link list">
                     <a href="#" class="item">QQ:1436372974</a>
                     <a href="#" class="item">Email:1436372974@qq.com</a>

@@ -14,7 +14,7 @@
 </head>
 <body>
 <!--导航-->
-<nav th:replace="_fragments :: menu(1)" class="ui inverted grey attached segment m-padded-tb-mini m-shadow-small" >
+<nav th:replace="_fragments :: menu(1)" class="ui inverted grey attached segment m-padded-tb-somini m-shadow-small" >
     <!--    attached附加到上一层-->
     <div class="ui container">
         <!--        stackable 缩小堆叠 适应移动端-->
@@ -154,14 +154,15 @@
 
 
 <!--底部footer-->
-<footer th:replace="_fragments :: footer" class="ui inverted grey vertical segment m-padded-tb-massive">
-    <!--    定义居中对齐容器-->
+<footer th:fragment="footer"  class="ui inverted grey vertical segment m-padded-tb-huge">
     <div class="ui center aligned container">
-        <!--    定义网格布局-->
-        <!--    divided grid将格的各个部分之间添加分隔线-->
         <div class="ui divided inverted stackable grid">
-
-            <div class="three wide column">
+            <!--            <div class="three wide column">-->
+            <!--                <div class="item">-->
+            <!--                    <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui centered rounded image" alt="" style="width:110px">-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="four wide column">
                 <h4 class="ui inverted header">最新博客</h4>
                 <div class="ui inverted link list">
 
@@ -172,25 +173,26 @@
                 </div>
 
             </div>
-            <div class="four wide column">
+            <div class="eight wide column">
                 <h4 class="ui inverted header">联系我</h4>
                 <div class="ui inverted link list">
                     <a href="#" class="item">QQ:1436372974</a>
                     <a href="#" class="item">Email:1436372974@qq.com</a>
+                    <div class="item m-margin-tb-mini">
+                        <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px; margin: auto; ">
+                    </div>
                 </div>
 
             </div>
+            <!--            <div class="item">-->
+            <!--                &lt;!&ndash;               rounded 圆角&ndash;&gt;-->
+            <!--                <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px; margin: auto; ">-->
 
-            <div class="item">
-                <!--               rounded 圆角-->
-                <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px; margin: auto; ">
-
+            <!--            </div>-->
+            <div class="four wide column">
+                <h4 class="ui inverted header ">关于</h4>
+                <p class="m-text-thin m-text-lined m-opacity-mini">这是我的个人博客及课程设计项目</p>
             </div>
-            <div class="six wide column">
-                <h4 class="ui inverted header">关于</h4>
-                <p class="m-text-thin m-text-lined m-opacity-mini">这是我的个人博客及毕业设计项目</p>
-            </div>
-
 
         </div>
         <div class="ui inverted section divider"></div>

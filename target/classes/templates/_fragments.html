@@ -9,22 +9,33 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
         <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
         <link rel="stylesheet" href="../static/css/me.css"th:href="@{/css/me.css}">
+
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+
+    <link rel="stylesheet" href="../static/css/me.css">
+
 </head>
 <body>
 <!--导航-->
-<nav th:fragment = "menu(n)" class="ui inverted  attached segment m-padded-tb-mini m-shadow-small" >
+<nav th:fragment = "menu(n)" class="ui inverted grey attached segment m-padded-tb-somini m-shadow-small" >
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">Blog</h2>
+            <h2 class="ui green header item">Blog</h2>
             <a href="#" class="m-item item m-mobile-hide" th:href="@{/}" th:classappend="${n==1} ? 'active'"><i class="home icon"></i> 首页</a>
-            <a href="#" class="m-item item m-mobile-hide" th:href="@{/types/-1}" th:classappend="${n==3} ? 'active'"><i class="home icon"></i> 分类</a>
-            <a href="#" class="m-item item m-mobile-hide" th:href="@{/tags/-1}" th:classappend="${n==2} ? 'active'"><i class="home icon"></i> 标签</a>
+            <a href="#" class="m-item item m-mobile-hide" th:href="@{/types/-1}" th:classappend="${n==3} ? 'active'"><i class="sitemap icon"></i> 分类</a>
+            <a href="#" class="m-item item m-mobile-hide" th:href="@{/tags/-1}" th:classappend="${n==2} ? 'active'"><i class="tags icon"></i> 标签</a>
             <a href="#" class="m-item item m-mobile-hide" th:href="@{/about}" th:classappend="${n==4} ? 'active'"><i class="  info icon"></i> 关于我</a>
 
 
-            <div class="right item m-item  m-mobile-hide ">
+            <div class="right  m-item item m-mobile-hide ">
                 <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
                 <div class="ui icon inverted transparent input">
+
+
+
+
+
                     <input type="text" name="query" placeholder="Search...." th:value="${query}">
                     <i onclick="document.forms['search'].submit()" class="search icon"></i>
                 </div>
@@ -34,19 +45,22 @@
 
         </div>
     </div>
-    <a href="" class="ui  invert black icon button m-top-right m-mobile-show" onclick="itemclick" id="menutoggle"><i class="sidebar icon"></i></a>
+    <a>
+    <a href="#" class="ui menu toggle grey icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i></a>
+    </a>
 </nav>
 
 <!--底部footer-->
-<footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
+<footer th:fragment="footer" id="waypoint" class="ui inverted grey vertical segment m-padded-tb-huge">
     <div class="ui center aligned container">
         <div class="ui divided inverted stackable grid">
-            <div class="three wide column">
-                <div class="item">
-                    <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui centered rounded image" alt="" style="width:110px">
-                </div>
-            </div>
-            <div class="three wide column">
+<!--            <div class="three wide column">-->
+<!--                <div class="item">-->
+<!--                    <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui centered rounded image" alt="" style="width:110px">-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="four wide column">
                 <h4 class="ui inverted header">最新博客</h4>
                 <div class="ui inverted link list">
 
@@ -57,15 +71,23 @@
                 </div>
 
             </div>
-            <div class="three wide column">
+            <div class="eight wide column">
                 <h4 class="ui inverted header">联系我</h4>
                 <div class="ui inverted link list">
                     <a href="#" class="item">QQ:1436372974</a>
                     <a href="#" class="item">Email:1436372974@qq.com</a>
+                    <div class="item m-margin-tb-mini">
+                    <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px; margin: auto; ">
+                    </div>
                 </div>
 
             </div>
-            <div class="seven wide column">
+<!--            <div class="item">-->
+<!--                &lt;!&ndash;               rounded 圆角&ndash;&gt;-->
+<!--                <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px; margin: auto; ">-->
+
+<!--            </div>-->
+            <div class="four wide column">
                 <h4 class="ui inverted header ">关于</h4>
                 <p class="m-text-thin m-text-lined m-opacity-mini">这是我的个人博客及课程设计项目</p>
             </div>
@@ -76,16 +98,76 @@
     </div>
 </footer>
 
+
+
 <th:block th:fragment="script">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
     <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
     <script src="../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+    <script src="../static/lib/qrcode/qrcode.min.js"></script>
+    <script src="../static/lib/tocbot/tocbot.min.js"></script>
+    <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
     <script>
-        $('#menutoggle').click(function () {
-            $('.m-item').toggleClass('m-mobile-hide');
-            return false;
+        // popup弹出窗口
+        $('#payButton').popup({
+            popup:$('.payQR.popup'),
+            on:'click',
+            position:'bottom center'
         });
+        tocbot.init({
+            // 把目录初始化到哪个区域
+            tocSelector: '.js-toc',
+            // 生成目录源在哪
+            contentSelector: '.js-toc-content',
+            // 生成的级别
+            headingSelector: 'h4,h5,h6',
+            // For headings inside relative or absolute positioned containers within content.
+            hasInnerContainers: true,
+        });
+        $('.toc.button').popup({
+            popup:$('.toc-container.popup'),
+            on:'click',
+            position:'left center'
+        });
+        $('.wechat').popup({
+            popup:$('.weixin-qr.popup'),
+            position:'left center'
+        });
+    </script>
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+
+        });
+        $('.wechat').popup({
+            popup:$('.weixin-qr.popup'),
+            position:'left center'
+        });
+        // 生成二维码
+        // var qrcode = new QRCode("qrcode", {
+        //     text: "http://jindo.dev.naver.com/collie",
+        //     width: 110,
+        //     height: 110,
+        //     colorDark : "#000000",
+        //     colorLight : "#ffffff",
+        //     correctLevel : QRCode.CorrectLevel.H
+        // });
+        // $('#toTop-button').click(function () {
+        //     $(window).scrollTo(0,500);
+        //
+        // });
+        var waypoint = new Waypoint({
+            element: document.getElementById('waypoint'),
+            handler: function(direction) {
+                if(direction=='down') {
+                    $('#toolbar').show(500);
+                }else {
+                    $('#toolbar').hide(500);
+                }
+                console.log('Scrolled to waypoint!'+ direction);
+            }
+        })
     </script>
 </th:block>
 

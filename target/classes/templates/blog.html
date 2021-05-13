@@ -6,6 +6,7 @@
     <title>Blog</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link rel="stylesheet" href="../static/css/typo.css">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
     <link rel="stylesheet" href="../static/lib/prism/prism.css">
     <link rel="stylesheet" href="../static/css/me.css">
@@ -13,17 +14,19 @@
 </head>
 <body>
 <!--导航-->
-<nav  th:replace="_fragments :: menu(0)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+<nav th:replace="_fragments :: menu(1)" class="ui inverted grey attached segment m-padded-tb-somini m-shadow-small" >
+    <!--    attached附加到上一层-->
     <div class="ui container">
+        <!--        stackable 缩小堆叠 适应移动端-->
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">Blog</h2>
-            <a href="#" class="item "><i class="home icon"></i> 首页</a>
-            <a href="#" class="item"><i class=" idea icon"></i> 分类</a>
-            <a href="#" class="item"><i class=" tags icon"></i> 标签</a>
-            <a href="#" class="item"><i class=" clone icon"></i> 归档</a>
-            <a href="#" class="item"><i class="  info icon"></i> 关于我</a>
+            <h2 class="ui green header item">Blog</h2>
+            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i> 首页</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="sitemap icon"></i> 分类</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class=" tags icon"></i> 标签</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class=" clone icon"></i> 归档</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="  info icon"></i> 关于我</a>
 
-            <div class="right item">
+            <div class="right m-item item m-mobile-hide">
                 <div class="ui icon inverted transparent input">
                     <input type="text" placeholder="Search....">
                     <i class="search icon"></i>
@@ -32,17 +35,23 @@
 
         </div>
     </div>
-
+    <a>
+        <a href="#" class="ui menu toggle grey icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </a>
 </nav>
 
 <!--中间内容-->
-<div class=" m-padded-tb-large m-container animated fadeIn">
+<!--animated fadeIn动画渐入-->
+<div id="waypoint" class=" m-padded-tb-large m-container animated headShake">
     <div class="ui container">
         <div class="ui top attached segment">
             <div class="ui horizontal link list">
                 <div class="item">
+                    <!--                                            avatar Image 圆形小图片（头像）-->
                     <img src="https://unsplash.it/100/100?image=1005" alt=""  th:src="@{${blog.user.avatar}}" class="ui avatar image">
-                    <div class="content"><a href="#" class="header"  th:text="${blog.user.nickname}">陈庚鹏</a></div>
+                    <div class="content"><a href="#" class="header"  th:text="${blog.user.nickname}">吴彦祖</a></div>
                 </div>
                 <div class="item">
                     <i class="calendar icon"></i><span th:text="${#dates.format(blog.updataTime,'yyyy-MM-dd')}">2020-6-15</span>
@@ -54,39 +63,45 @@
         </div>
         <div class="ui attached segment">
 <!--            图片区域-->
+            <!--fluid填充容器整个宽度 rounded图片弧度为圆形-->
             <img src="https://unsplash.it/800/450?image=1015" alt="" th:src="@{${blog.firstPicture}}" class="ui fluid rounded image">
         </div>
         <div class="ui attached paddded segment">
 <!--            内容-->
+            <!--            靠右容积布局-->
             <div class="ui right aligned basic segment">
-                <div class="ui orange basic label" th:text="${blog.flag}">原创</div>
+                <!--                红色标签-->
+                <div class="ui red  basic label" th:text="${blog.flag}">原创</div>
             </div>
+            <!--            居中容积布局-->
             <h2 class="ui center aligned header" th:text="${blog.title}"> 视听之外   </h2>
 <!--            中间文章内容-->
-            <div id="content" style="white-space:normal; word-break:break-all;" class="typo typo-selection m-padded-lr-reponsive m-padded-tb-large" th:utext="${blog.content}">
+            <div id="content" style="white-space:normal; word-break:break-all;" class="typo typo-selection js-toc-content m-padded-lr-reponsive m-padded-tb-large" th:utext="${blog.content}">
 
-                <p>1.如果没有自由，一切都是空想。《勇敢的心》</p>
+                <h5>1.如果没有自由，一切都是空想。《勇敢的心》</h5>
                 <p>&nbsp; &nbsp; 适用于“自由”等主题，例如，写“自由”时，可以这样用：拥有自由，是做所有你想做的事情的基础，如果没有自由，那一切都只是空想。</p>
                 <p><br></p>
-                <p>2.把手握紧，里面什么也没有；把手放开，你得到的是一切。《指环王》</p>
+                <h5>2.把手握紧，里面什么也没有；把手放开，你得到的是一切。《指环王》</h5>
                 <p>&nbsp; &nbsp; 适用于“选择”“态度”等主题，例如，写“态度”时，可以这样用：不同的态度将会获得不同的回报，有时，尽管你双手紧握，但却一无所有，张开双手，却拥抱了整个世界。</p>
                 <p><br></p>
-                <p>3.总是担心明天，又怎能把握好今天。《三傻大闹宝莱坞》</p>
-
+                <h5>3.总是担心明天，又怎能把握好今天。《三傻大闹宝莱坞》</h5>
+                <p>&nbsp; &nbsp;追求卓越,成功会不知不觉追上你. 我们学习,不是为了享乐人生,而是为了完善人生.
             </div>
 
 <!--        标签-->
             <div  class="m-padded-lr-reponsive m-padded-tb-large">
-                <div class="ui basic teal left pointing label" th:each="tag : ${blog.tags}" th:text="${tag.name}">电影台词</div>
+                <div class="ui basic green left pointing label" th:each="tag : ${blog.tags}" th:text="${tag.name}">电影台词</div>
             </div>
 <!--            打赏-->
             <div class="ui center aligned basic segment">
-            <button id="payButton" class="ui orange basic circular button">赞赏</button>
+                <!--                circular圆角-->
+            <button id="payButton" class="ui red basic circular button">赞赏</button>
             </div>
             <div class="ui payQR flowing popup transtition hidden">
-                <div class="ui orange basic label">
+                <div class="ui red basic label">
                     <div class="ui image">
                         <img src="../static/images/idCard.png" alt="" th:src="@{/images/idCard.png}" style="width: 120px" class="ui rounded bordered image">
+                        <div>微信支付</div>
                     </div>
                 </div>
             </div>
@@ -97,7 +112,7 @@
             <div class="ui middle aligned grid">
                 <div class="eleven wide column">
                     <ui class="list">
-                        <li>作者：<span th:text="${blog.user.nickname}">陈庚鹏</span><a href="#" th:href="@{/about}" target="_blank">(联系作者)</a></li>
+                        <li>作者：<span th:text="${blog.user.nickname}">吴彦祖</span><a href="#" th:href="@{/about}" target="_blank">(联系作者)</a></li>
                         <li>发表时间：<span th:text="${#dates.format(blog.updataTime,'yyyy-MM-dd HH:mm')}">2020-6-16 20:45</span></li>
                         <li>版权声明：自由转载</li>
                     </ui>
@@ -109,7 +124,7 @@
 
         </div>
         <div class="ui bottom attached segment">
-
+            <!--    留言区域列表-->
 
 
         </div>
@@ -117,28 +132,37 @@
     </div>
 </div>
 
-<div class="m-fixed m-right-bottom m-padded">
-    <div class="ui vertical icon buttons ">
-        <a href="#" class="ui wechat icon button"><i class="weixin icon"></i></a>
-        <a href="#" class="ui icon button"><i class="chevron up icon"></i></a>
+
+<div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none">
+    <div class="ui vertical icon buttons">
+        <button type="button" class="ui toc green button">目录</button>
+        <button class="ui wechat icon button"><i class="weixin icon"></i></button>
+        <div id="toTop-button" class="ui icon button"><i class="chevron up icon"></i></div>
     </div>
 </div>
-<div class="ui weixin-qr flowing popup transtition hidden m-padded-mini" style="width: 130px;" >
-    <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}"  alt="" class="ui rounded image" style="width: 120px;">
+<div  class="ui toc-container flowing popup transtition hidden" style="width: 250px!important;">
+    生成的目录
+    <ol class="js-toc">
+
+    </ol>
+</div>
+<div id="qrcode" class="ui weixin-qr flowing popup transtition hidden" style="width: 130px;!important;">
+    <!--    <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" alt="" class="ui rounded image" style="width: 120px;">-->
 </div>
 <br>
 <br>
 
+
 <!--底部footer-->
-<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+<footer th:fragment="footer"  class="ui inverted grey vertical segment m-padded-tb-huge">
     <div class="ui center aligned container">
         <div class="ui divided inverted stackable grid">
-            <div class="three wide column">
-                <div class="item">
-                    <img src="../static/images/idCard.png" class="ui rounded image" alt="" style="width:110px">
-                </div>
-            </div>
-            <div class="three wide column">
+            <!--            <div class="three wide column">-->
+            <!--                <div class="item">-->
+            <!--                    <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui centered rounded image" alt="" style="width:110px">-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="four wide column">
                 <h4 class="ui inverted header">最新博客</h4>
                 <div class="ui inverted link list">
 
@@ -149,15 +173,23 @@
                 </div>
 
             </div>
-            <div class="three wide column">
+            <div class="eight wide column">
                 <h4 class="ui inverted header">联系我</h4>
                 <div class="ui inverted link list">
                     <a href="#" class="item">QQ:1436372974</a>
                     <a href="#" class="item">Email:1436372974@qq.com</a>
+                    <div class="item m-margin-tb-mini">
+                        <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px; margin: auto; ">
+                    </div>
                 </div>
 
             </div>
-            <div class="seven wide column">
+            <!--            <div class="item">-->
+            <!--                &lt;!&ndash;               rounded 圆角&ndash;&gt;-->
+            <!--                <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px; margin: auto; ">-->
+
+            <!--            </div>-->
+            <div class="four wide column">
                 <h4 class="ui inverted header ">关于</h4>
                 <p class="m-text-thin m-text-lined m-opacity-mini">这是我的个人博客及课程设计项目</p>
             </div>
@@ -170,21 +202,74 @@
 <th:block th:replace="_fragments :: script">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"></script>
 <script src="../static/lib/prism/prism.js"></script>
+    <script src="../static/lib/qrcode/qrcode.min.js"></script>
+    <script src="../static/lib/tocbot/tocbot.min.js"></script>
+    <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
 </th:block>
 <script>
+    // popup弹出窗口
     $('#payButton').popup({
         popup:$('.payQR.popup'),
         on:'click',
         position:'bottom center'
     });
-
+    tocbot.init({
+        // 把目录初始化到哪个区域
+        tocSelector: '.js-toc',
+        // 生成目录源在哪
+        contentSelector: '.js-toc-content',
+        // 生成的级别
+        headingSelector: 'h4,h5,h6',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+    $('.toc.button').popup({
+        popup:$('.toc-container.popup'),
+        on:'click',
+        position:'left center'
+    });
     $('.wechat').popup({
         popup:$('.weixin-qr.popup'),
         position:'left center'
     });
-</script>
 
+</script>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+
+    });
+    $('.wechat').popup({
+        popup:$('.weixin-qr.popup'),
+        position:'left center'
+    });
+    // 生成二维码
+    var qrcode = new QRCode("qrcode", {
+        text: "http://jindo.dev.naver.com/collie",
+        width: 110,
+        height: 110,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+    $('#toTop-button').click(function () {
+        $(window).scrollTo(0,500);
+
+    });
+    var waypoint = new Waypoint({
+        element: document.getElementById('waypoint'),
+        handler: function(direction) {
+            if(direction=='down') {
+                $('#toolbar').show(500);
+            }else {
+                $('#toolbar').hide(500);
+            }
+            console.log('Scrolled to waypoint!'+ direction);
+        }
+    })
+</script>
 
 </body>
 </html>

@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
         <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
         <link rel="stylesheet" href="../static/css/me.css"th:href="@{/css/me.css}">
+
     <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 
@@ -17,7 +18,7 @@
 </head>
 <body>
 <!--导航-->
-<nav th:fragment = "menu(n)" class="ui inverted grey attached segment m-padded-tb-mini m-shadow-small" >
+<nav th:fragment = "menu(n)" class="ui inverted grey attached segment m-padded-tb-somini m-shadow-small" >
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui green header item">Blog</h2>
@@ -30,6 +31,11 @@
             <div class="right  m-item item m-mobile-hide ">
                 <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
                 <div class="ui icon inverted transparent input">
+
+
+
+
+
                     <input type="text" name="query" placeholder="Search...." th:value="${query}">
                     <i onclick="document.forms['search'].submit()" class="search icon"></i>
                 </div>
@@ -46,7 +52,7 @@
 </nav>
 
 <!--底部footer-->
-<footer th:fragment="footer" id="waypoint" class="ui inverted grey vertical segment m-padded-tb-massive">
+<footer th:fragment="footer" id="waypoint" class="ui inverted grey vertical segment m-padded-tb-huge">
     <div class="ui center aligned container">
         <div class="ui divided inverted stackable grid">
 <!--            <div class="three wide column">-->
@@ -91,6 +97,8 @@
         <p class="m-text-thin m-text-lined m-opacity-mini">Copyright@2020 Blog by Wuyanzu</p>
     </div>
 </footer>
+
+
 
 <th:block th:fragment="script">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>

@@ -1,5 +1,6 @@
 body{
-    background: url("../images/bg.png") !important;
+
+    background: url("../images/bg03.png") !important;
 }
 
 .m-padded-mini{
@@ -16,6 +17,11 @@ body{
 .m-padded-tb-mini{
     padding-top:0.2em !important;
     padding-bottom: 0.2em !important;
+
+}
+.m-padded-tb-somini{
+    padding-top:0.05em !important;
+    padding-bottom: 0.05em !important;
 
 }
 .m-margin-tb-tiny{
@@ -78,6 +84,11 @@ body{
 .m-top-right{
     position: absolute;
     top: 14px;
+    right: 0;
+}
+.m-right-top{
+    position: absolute;
+    top:0;
     right: 0;
 }
 .m-shadow-small{
