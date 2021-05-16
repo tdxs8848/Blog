@@ -2,6 +2,7 @@ package com.szpt.cn.blog.web;
 
 
 
+import com.szpt.cn.blog.po.Blog;
 import com.szpt.cn.blog.service.BlogService;
 import com.szpt.cn.blog.service.TagService;
 import com.szpt.cn.blog.service.TypeService;
@@ -55,7 +56,10 @@ public class indexController {
     @GetMapping("blog/{id}")
     public String blog(@PathVariable Long id,Model model){
         model.addAttribute("blog",blogService.getAndConvert(id));
-
+        //浏览记录加一
+        Blog blog = blogService.getBlog(id);
+        blog.setViews(blog.getViews()+1);
+        blogService.saveBlog(blog);
 
         return "blog";
     }
