@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>首页</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link rel="stylesheet" scr="../static/css/me.css" >
+    <link rel="stylesheet" href="../static/css/me.css" >
 </head>
 <body>
 <!--导航-->
@@ -24,6 +24,7 @@
                     <input type="text" placeholder="Search....">
                     <i class="search icon"></i>
                 </div>
+
             </div>
             
         </div>
@@ -40,16 +41,16 @@
                 <div class="ui top attached segment">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <div class="ui teal header">博客</div>
+                            <div class="ui green header">博客</div>
                         </div>
                         <div class=" right aligned column">
-                            共<h3 class="ui orange header m-inline-block m-text-thin" th:text="${page.totalElements}"> 14 </h3>篇
+                            共<h3 class="ui red header m-inline-block m-text-thin" th:text="${page.totalElements}"> 14 </h3>篇
                         </div>
                     </div>
                 </div>
 <!--                content-->
             <div class="ui attached  segment">
-                <div class="ui padded vertical segment m-padded-tb-huge"  th:each="blog : ${page.content}">
+                <div class="ui padded vertical segment m-padded-tb-large"  th:each="blog : ${page.content}">
                     <div class="ui middle aligned stackable mobile reversed grid">
                         <div class="eleven wide column">
                             <h3 class="ui header"><a href="#"style="color: black" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}" target="_blank">答辩</a></h3>
@@ -59,7 +60,8 @@
                                     <div class="ui mini horizontal link list">
                                         <div class="item">
                                             <img src="https://unsplash.it/100/100?image=1005" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
-                                            <div class="content"><a href="#" th:src="@{/about}" target="_blank" class="header" th:text="${blog.user.nickname}">陈庚鹏</a></div>
+                                            <div class="content">
+                                                <a href="#" th:src="@{/about}" target="_blank" class="header" th:text="${blog.user.nickname}">吴彦祖</a></div>
                                         </div>
                                         <div class="item">
                                             <i class="calendar icon"></i><span th:text="${#dates.format(blog.updataTime,'yyyy-MM-dd')}">2020-6-15</span>
@@ -70,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="right aligned five wide column">
-                                    <a href="#" th:href="@{/types/{id}(id=${blog.type.id})}"  class="ui teal basic m-padded-mini label m-text-thin " th:text="${blog.type.name}">认知升级</a>
+                                    <a href="#" th:href="@{/types/{id}(id=${blog.type.id})}"  class="ui green basic m-padded-mini label m-text-thin " th:text="${blog.type.name}">认知升级</a>
                                 </div>
                             </div>
                         </div>
@@ -91,10 +93,11 @@
                 <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <a href="#" th:href="@{/(page=${page.number}-1)}" class="ui teal mini basic button" th:unless="${page.first}">上一页</a>
+                            <!--                            basic:背景色变透明-->
+                            <a href="#" th:href="@{/(page=${page.number}-1)}" class="ui green mini basic button" th:unless="${page.first}">上一页</a>
                         </div>
                         <div class=" right aligned column">
-                            <a href="#" th:href="@{/(page=${page.number}+1)}" class="ui teal mini basic button" th:unless="${page.last}">下一页</a>
+                            <a href="#" th:href="@{/(page=${page.number}+1)}" class="ui green mini basic button" th:unless="${page.last}">下一页</a>
                         </div>
                     </div>
                 </div>
@@ -104,6 +107,7 @@
             <div class="five wide column   m-padded-tb-large ">
 <!--            分类-->
                 <div class="ui segments">
+                    <!--                    secondary 加灰色-->
                     <div class="ui secondary segment">
                         <div class="ui  two column grid">
                             <div class="column">
@@ -113,11 +117,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui teal segment ">
+                    <!--                    分层加线-->
+                    <div class="ui green segment ">
+                        <!--                        竖菜单 fluid填充容器-->
+
                         <div class="ui fluid vertical menu">
                             <a href="#"  th:href="@{/types/{id}(id=${type.id})}" class="item" th:each="type : ${types}">
-                                <span th:text="${type.name}">学习日志</span>
-                                <div class="ui teal basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
+                                <span th:text="${type.name}">数学笔记</span>
+                                <div class="ui green basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
                             </a>
 
                         </div>
@@ -134,10 +141,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui teal segment ">
+                    <div class="ui green segment ">
                         <div class="ui fluid vertical menu">
-                        <a href="#"  th:href="@{/tags/{id}(id=${tag.id})}" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
-                            <span th:text="${tag.name}">方法论</span>
+                        <a href="#"  th:href="@{/tags/{id}(id=${tag.id})}" class="ui green basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
+                            <span th:text="${tag.name}">论文</span>
                             <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
                         </a>
                         </div>
@@ -150,12 +157,13 @@
                         <i class="bookmark icon"></i>最新推荐
                     </div>
                     <div class="ui segment" th:each="blog : ${recommendBlogs}">
-                        <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" style="color: #333" th:text="${blog.title}">用户故事</a>
+                        <a href="#" target="_blank" class="m-black m-text-thin" th:href="@{/blog/{id}(id=${blog.id})}" style="color: #333" th:text="${blog.title}">用户故事</a>
                     </div>
 
 
                 </div>
 <!--            二维码-->
+                <!--                divider分割线-->
                 <h4 class="ui horizontal divider header m-margin-top-large">
                     扫码关注我
                 </h4>
@@ -171,6 +179,7 @@
 <br>
 
 <!--底部footer-->
+<!--vertical：消除圆角 segment 分段-->
 <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
 <div class="ui center aligned container">
     <div class="ui divided inverted stackable grid">
@@ -188,6 +197,7 @@
                    <a href="#" class="item">Java安装</a>
 
             </div>
+
 
         </div>
         <div class="three wide column">
@@ -212,6 +222,16 @@
 <th:block th:replace="_fragments :: script">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../static/lib/prism/prism.js"></script>
+    <script src="../static/lib/qrcode/qrcode.min.js"></script>
+    <script src="../static/lib/tocbot/tocbot.min.js"></script>
+    <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+
+        });
+    </script>
 </th:block>
 
 

@@ -13,7 +13,7 @@
 <nav th:replace="admin/_fragments :: menu(0) " class="ui inverted attached segment m-padded-tb-mini m-shadow-small " >
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">分类新增</h2>
+            <h2 class="ui green header item">分类新增</h2>
             <a href="#" class="active item "><i class="home icon"></i> 博客</a>
             <a href="#" class=" item"><i class=" idea icon"></i> 分类</a>
             <a href="#" class="item"><i class=" tags icon"></i> 标签</a>
@@ -38,8 +38,8 @@
 </nav>
 <div class="ui attached pointing menu">
     <div class="ui container">
-        <div class="right menu">
-            <a href="#"  th:href="@{/admin/tag/input}" class="teal active item">新增</a>
+        <div class="left menu">
+            <a href="#"  th:href="@{/admin/tag/input}" class="green active item">新增</a>
             <a href="#"  th:href="@{/admin/tag}"class="item">列表管理</a>
         </div>
 
@@ -57,7 +57,7 @@
             <input type="hidden" name="id" th:value="${id}">
             <div class="required field">
                 <div class="ui left labeled input">
-                    <label  class="ui teal basic label">名称</label>
+                    <label  class="ui green basic label">名称</label>
                     <input type="text"name="name" placeholder="分类名称" th:value="*{name}">
 
                 </div>
@@ -68,7 +68,7 @@
          、
             <div class="ui right aligned container">
                 <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
-                <button class="ui teal submit button">提交</button>
+                <button class="ui green submit button">提交</button>
             </div>
         </form>
 
