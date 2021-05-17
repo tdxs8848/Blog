@@ -40,6 +40,8 @@ public class TypeShowController {
         model.addAttribute("types",types);
         model.addAttribute("page",blogService.listBlog(p,blogQuery));
         model.addAttribute("activeTypeId",id);
+        //页脚最新博客
+        model.addAttribute("recommendBlogs3",blogService.listRecommendBlogTop(3));
         return "types";
 
 

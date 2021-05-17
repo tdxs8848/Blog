@@ -39,6 +39,8 @@ public class TagShowController {
         model.addAttribute("tags",tags);
         model.addAttribute("page",blogService.listBlog(id,p));
         model.addAttribute("activeTagId",id);
+        //页脚最新博客
+        model.addAttribute("recommendBlogs3",blogService.listRecommendBlogTop(3));
         return "tags";
 
 
