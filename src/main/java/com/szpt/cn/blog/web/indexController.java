@@ -36,12 +36,17 @@ public class indexController {
         model.addAttribute("types",typeService.listTypeTop(6));
         model.addAttribute("tags",tagService.listTagTop(10));
         model.addAttribute("recommendBlogs",blogService.listRecommendBlogTop(8));
+        //页脚最新博客
+        model.addAttribute("recommendBlogs3",blogService.listRecommendBlogTop(3));
         return "index";
     }
+
     @GetMapping("/blog")
     public String bbblog(){
         return "blog";
     }
+
+
 
     @PostMapping("/search")
     public String search(@PageableDefault(size = 8,sort = {"updataTime"},
@@ -50,12 +55,16 @@ public class indexController {
 
         model.addAttribute("page",blogService.listBlog("%"+query+"%",p));
         model.addAttribute("query",query);
+        //页脚最新博客
+        model.addAttribute("recommendBlogs3",blogService.listRecommendBlogTop(3));
         return "search";
     }
 
     @GetMapping("blog/{id}")
     public String blog(@PathVariable Long id,Model model){
         model.addAttribute("blog",blogService.getAndConvert(id));
+        //页脚最新博客
+        model.addAttribute("recommendBlogs3",blogService.listRecommendBlogTop(3));
         //浏览记录加一
         Blog blog = blogService.getBlog(id);
         blog.setViews(blog.getViews()+1);
@@ -65,12 +74,17 @@ public class indexController {
     }
 
     @GetMapping("/about")
-    public String about(){
+    public String about(Model model){
+        //页脚最新博客
+        model.addAttribute("recommendBlogs3",blogService.listRecommendBlogTop(3));
         return "about";
     }
 
     @GetMapping("/tags")
-    public String tags(){
+    public String tags(Model model)
+    {
+        //页脚最新博客
+        model.addAttribute("recommendBlogs3",blogService.listRecommendBlogTop(3));
         return "tags";
     }
 
