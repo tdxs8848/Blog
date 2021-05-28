@@ -62,12 +62,12 @@
 <!--            </div>-->
             <div class="four wide column">
                 <h4 class="ui inverted header">最新博客</h4>
-                <div class="ui inverted link list">
+                <div class="ui inverted link list"   th:each="blog : ${recommendBlogs3}">
 
-                    <a href="#" class="item">MySql安装</a>
-                    <a href="#" class="item">Python安装</a>
-                    <a href="#" class="item">Java安装</a>
-
+<!--                    <a href="#" class="item">MySql安装</a>-->
+<!--                    <a href="#" class="item">Python安装</a>-->
+<!--                    <a href="#" class="item">Java安装</a>-->
+                        <a href="#"class="item" target="_blank"  th:href="@{/blog/{id}(id=${blog.id})}"  th:text="${blog.title}">用户故事</a>
                 </div>
 
             </div>
@@ -89,12 +89,14 @@
 <!--            </div>-->
             <div class="four wide column">
                 <h4 class="ui inverted header ">关于</h4>
-                <p class="m-text-thin m-text-lined m-opacity-mini">这是我的个人博客及课程设计项目</p>
+                <p class="m-text-thin m-text-lined m-opacity-mini">这是我们组共同设计的博客网站与毕业设计项目</p>
             </div>
 
         </div>
         <div class="ui inverted section divider"></div>
         <p class="m-text-thin m-text-lined m-opacity-mini">Copyright@2020 Blog by Wuyanzu</p>
+        <p class="m-text-thin m-text-lined m-opacity-mini">备案/许可证编号为：粤ICP备2020139044号</p>
+
     </div>
 </footer>
 
