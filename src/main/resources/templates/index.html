@@ -181,43 +181,52 @@
 
 <!--底部footer-->
 <!--vertical：消除圆角 segment 分段-->
-<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
-<div class="ui center aligned container">
-    <div class="ui divided inverted stackable grid">
-        <div class="three wide column">
-            <div class="item">
-                <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px">
+<footer th:fragment="footer" id="waypoint" class="ui inverted grey vertical segment m-padded-tb-huge">
+    <div class="ui center aligned container">
+        <div class="ui divided inverted stackable grid">
+            <!--            <div class="three wide column">-->
+            <!--                <div class="item">-->
+            <!--                    <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui centered rounded image" alt="" style="width:110px">-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="four wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list"   th:each="blog : ${recommendBlogs3}">
+
+                    <!--                    <a href="#" class="item">MySql安装</a>-->
+                    <!--                    <a href="#" class="item">Python安装</a>-->
+                    <!--                    <a href="#" class="item">Java安装</a>-->
+                    <a href="#"class="item" target="_blank"  th:href="@{/blog/{id}(id=${blog.id})}"  th:text="${blog.title}">用户故事</a>
+                </div>
+
             </div>
-       </div>
-        <div class="three wide column">
-            <h4 class="ui inverted header">最新博客</h4>
-            <div class="ui inverted link list">
-
-                   <a href="#" class="item">MySql安装</a>
-                   <a href="#" class="item">Python安装</a>
-                   <a href="#" class="item">Java安装</a>
+            <div class="eight wide column">
+                <h4 class="ui inverted header">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">QQ:1436372974</a>
+                    <a href="#" class="item">Email:1436372974@qq.com</a>
+                    <div class="item m-margin-tb-mini">
+                        <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px; margin: auto; ">
+                    </div>
+                </div>
 
             </div>
+            <!--            <div class="item">-->
+            <!--                &lt;!&ndash;               rounded 圆角&ndash;&gt;-->
+            <!--                <img src="../static/images/idCard.png" th:src="@{/images/idCard.png}" class="ui rounded image" alt="" style="width:110px; margin: auto; ">-->
 
+            <!--            </div>-->
+            <div class="four wide column">
+                <h4 class="ui inverted header ">关于</h4>
+                <p class="m-text-thin m-text-lined m-opacity-mini">这是我们组共同设计的博客网站与毕业设计项目</p>
+            </div>
 
         </div>
-        <div class="three wide column">
-            <h4 class="ui inverted header">联系我</h4>
-            <div class="ui inverted link list">
-                <a href="#" class="item">QQ:1436372974</a>
-                <a href="#" class="item">Email:1436372974@qq.com</a>
-            </div>
-
-        </div>
-        <div class="seven wide column">
-            <h4 class="ui inverted header ">关于</h4>
-            <p class="m-text-thin m-text-lined m-opacity-mini">这是我的个人博客及课程设计项目</p>
-        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-lined m-opacity-mini">Copyright@2020 Blog by Wuyanzu</p>
+        <p class="m-text-thin m-text-lined m-opacity-mini">备案/许可证编号为：粤ICP备2020139044号</p>
 
     </div>
-    <div class="ui inverted section divider"></div>
-    <p class="m-text-thin m-text-lined m-opacity-mini">Copyright@2020 Blog by Wuyanzu</p>
-</div>
 </footer>
 
 <th:block th:replace="_fragments :: script">
